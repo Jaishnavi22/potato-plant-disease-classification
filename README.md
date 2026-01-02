@@ -2,11 +2,11 @@
 
 ## Description
 This project is a beginner-friendly image classification system that detects
-whether a **potato plant leaf** is **Healthy** or **Diseased** using
-a Convolutional Neural Network (CNN).
+whether a **potato plant leaf** is **Healthy** or **Diseased** using a
+Convolutional Neural Network (CNN).
 
-The model is trained on potato leaf images and helps in understanding
-basic plant disease detection using deep learning.
+The model is trained on potato leaf images and can also **predict the condition
+of a new potato leaf image**.
 
 ---
 
@@ -15,17 +15,15 @@ basic plant disease detection using deep learning.
 - Organized the dataset into two classes
 - Preprocessed images using TensorFlow
 - Built a simple CNN model
-- Trained the model to classify leaf images
-- Displayed classification accuracy during training
+- Trained the model on potato leaf images
+- Predicted whether a given potato leaf image is healthy or diseased
 
 ---
 
-## Output
-- The model classifies potato leaf images into:
-  - **Healthy**
-  - **Diseased**
-- Training accuracy is displayed after each epoch
-- Confirms successful plant disease classification using CNN
+## How It Works
+- The CNN model learns patterns from healthy and diseased potato leaf images
+- After training, a new leaf image (`test_leaf.jpg`) is given as input
+- The model predicts whether the leaf is **Healthy** or **Diseased**
 
 ---
 
@@ -38,6 +36,4 @@ basic plant disease detection using deep learning.
 
 ## Project Type
 Binary Image Classification
-
-
 
