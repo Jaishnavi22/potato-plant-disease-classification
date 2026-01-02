@@ -1,5 +1,6 @@
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import numpy as np
+from tensorflow.keras.preprocessing.image import ImageDataGenerator, image
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
@@ -8,7 +9,7 @@ IMG_SIZE = 128
 BATCH_SIZE = 8
 EPOCHS = 3
 
-# Load images from dataset folder
+# Load dataset
 datagen = ImageDataGenerator(rescale=1./255)
 
 data = datagen.flow_from_directory(
@@ -38,4 +39,20 @@ model.compile(
 # Train model
 model.fit(data, epochs=EPOCHS)
 
-print("🌱 Potato plant disease classification completed")
+# -------------------- PREDICTION PART --------------------
+
+# Load a test image (change path if needed)
+test_image_path = "test_leaf.jpg"
+
+img = image.load_img(test_image_path, target_size=(IMG_SIZE, IMG_SIZE))
+img_array = image.img_to_array(img)
+img_array = np.expand_dims(img_array, axis=0)
+img_array = img_array / 255.0
+
+prediction = model.predict(img_array)
+
+if prediction[0][0] > 0.5:
+    print("🍂 Prediction: Diseased Potato Leaf")
+else:
+    print("🌱 Prediction: Healthy Potato Leaf")
+
